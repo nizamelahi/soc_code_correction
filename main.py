@@ -4,6 +4,7 @@ from datetime import datetime
 time1=datetime.now()
 tokenizer = AutoTokenizer.from_pretrained("HyperbeeAI/Tulpar-7b-v0")
 model = AutoModelForCausalLM.from_pretrained("HyperbeeAI/Tulpar-7b-v0")
+model = model.to("cuda")
 
 input_text="What is deep learning?"
 prompt = f"### User: {input_text}\n\n### Assistant:\n"
