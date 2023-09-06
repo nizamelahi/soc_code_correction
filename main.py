@@ -29,3 +29,6 @@ for x in range(10):
 
     
     outdata.append(indata[x])
+
+f = open('out_data.json', 'wb')
+f.write(outdata)
