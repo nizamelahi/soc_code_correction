@@ -39,5 +39,5 @@ for indx,i in enumerate(indata):
     
     outdata.append(i)
 
-f = open('out_data.json', 'wb')
-f.write(outdata)
+with open(f"outdata.json", "w") as f:
+    json.dump(outdata, f)
