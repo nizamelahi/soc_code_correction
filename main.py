@@ -24,7 +24,7 @@ for i in indata:
     print(tokenizer.decode(output[0]))
     out=tokenizer.decode(output[0])
     dict_str=eval("{"+out.split("{")[1].split("}")[0]+"}")
-    keys=dict_str.keys()
+    keys=list(dict_str.keys())
     i['new_soc_code']=dict_str[keys[0]]
     i['new_soc_title']=dict_str[keys[1]]
     
