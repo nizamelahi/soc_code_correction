@@ -40,4 +40,4 @@ for indx,i in enumerate(indata):
     outdata.append(i)
 
 with open(f"outdata.json", "w") as f:
-    json.dump(outdata, f)
+    json.dumps(outdata, f)
