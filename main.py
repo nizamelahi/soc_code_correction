@@ -15,20 +15,23 @@ model = AutoModelForCausalLM.from_pretrained("HyperbeeAI/Tulpar-7b-v0")
 model = model.to("cuda")
 
 outdata=[]
-for x in range(10):
+for i in indata:
     
-    input_text=f"In as few words as possible ,please provide SOC code for the job title: \"{indata[x]['job_title']}\", and put it in a json along with the SOC title "
+    input_text=f"In as few words as possible ,please provide SOC code for the job title: \"{i['job_title']}\", and put it in a json along with the SOC title "
     prompt = f"### User: {input_text}\n\n### Assistant:\n"
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
     output = model.generate(**inputs, do_sample=True, top_p=0.95, top_k=0, max_new_tokens=512)
     print(tokenizer.decode(output[0]))
     out=tokenizer.decode(output[0])
-    indata[x]['new_soc_code']=out.split("{")[1].split(":")[1].split(",")[0].replace("\"","")
-    indata[x]['new_soc_title']=out.split("{")[1].split(",")[1].split(":")[1].split("}")[0].replace("\"","")
+    dict_str=json.loads("{"+out.split("{")[1].split("}")[0]+"}")
+    keys=dict_str.keys()
+    i['new_soc_code']=dict_str[keys[0]]
+    i['new_soc_title']=dict_str[keys[1]]
+    
     print(f"time taken: {datetime.now()-time1}")
 
     
-    outdata.append(indata[x])
+    outdata.append(i)
 
 f = open('out_data.json', 'wb')
 f.write(outdata)
