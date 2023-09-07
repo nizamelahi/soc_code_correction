@@ -16,7 +16,7 @@ model = model.to("cuda")
 
 outdata=[]
 for indx,i in enumerate(indata):
-    if(indx == 100):
+    if(indx == 10):
         break
     time1=datetime.now()
     input_text=f"In as few words as possible ,please provide SOC_CODE for the job title: {i['job_title']} and put it in a json along with the SOC_TITLE "
