@@ -46,7 +46,8 @@ for indx, i in enumerate(indata):
         keys = list(dict_str.keys())
         i["new_soc_code"] = dict_str[keys[0]]
         i["new_soc_title"] = dict_str[keys[1]]
-    except:
+    except Exception as e:
+        print(e)
         i["new_soc_code"] = "unavailable"
         i["new_soc_title"] = "unavailable"
 
