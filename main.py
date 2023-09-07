@@ -28,7 +28,7 @@ for indx, i in enumerate(indata):
     if indx == 10:
         break
     time1 = datetime.now()
-    prompt = f"In as few words as possible ,please provide SOC_CODE for the job title: {i['job_title']} and put it in the format: ---SOC_TITLE---SOC_CODE--- "
+    prompt = f"In as few words as possible ,please provide SOC_CODE for the job title: {i['job_title']} and put it in JSON along with the SOC_TITLE "
     prompt_template = f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
     ### Instruction:
@@ -42,10 +42,10 @@ for indx, i in enumerate(indata):
     print(tokenizer.decode(output[0]))
     out = tokenizer.decode(output[0])
     try:
-        soc_code=out.split("---")[1]
-        soc_title=out.split("---")[2]
-        i["new_soc_code"] = soc_code
-        i["new_soc_title"] = soc_title
+        dict_str = eval("{" + out.split("{")[1].split("}")[0] + "}")
+        keys = list(dict_str.keys())
+        i["new_soc_code"] = dict_str[keys[0]]
+        i["new_soc_title"] = dict_str[keys[1]]
     except Exception as e:
         print(e)
         i["new_soc_code"] = "unavailable"
