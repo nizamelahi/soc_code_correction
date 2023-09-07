@@ -7,6 +7,9 @@ import json
 with open("data.json") as json_file:
     indata = json.load(json_file)
 
+with open('soc.txt') as f:
+    soc_code_list = f.readlines()
+
 
 model_name_or_path = "TheBloke/Platypus2-70B-Instruct-GPTQ"
 # To use a different branch, change revision
@@ -28,11 +31,14 @@ for indx, i in enumerate(indata):
     if indx == 10:
         break
     time1 = datetime.now()
-    prompt = f"please provide May 2022 Occupation Profiles SOC_CODE and SOC_TITLE for the job title: {i['job_title']} and put it in JSON"
-    prompt_template = f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
+    prompt = f"please provide the most relevant SOC_CODE and SOC_TITLE for the job title: {i['job_title']} and put it in JSON"
+    prompt_template = f"""Below is an instruction that describes a task or question, paired with an input that provides further context. Write a response that completes the task.
 
     ### Instruction:
     {prompt}
+
+    ### Input:
+    {soc_code_list}    
 
     ### Response:
 
