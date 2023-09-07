@@ -17,7 +17,7 @@ model = model.to("cuda")
 outdata=[]
 for i in indata:
     time1=datetime.now()
-    input_text=f"In as few words as possible ,please provide SOC_CODE for the job title: \"{i['job_title']}\", and put it in a json along with the SOC_TITLE "
+    input_text=f"In as few words as possible ,please provide SOC_CODE for the job title: {i['job_title']} and put it in a json along with the SOC_TITLE "
     prompt = f"### User: {input_text}\n\n### Assistant:\n"
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
     output = model.generate(**inputs, do_sample=True, top_p=0.95, top_k=0, max_new_tokens=512)
