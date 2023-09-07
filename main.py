@@ -28,7 +28,7 @@ for indx, i in enumerate(indata):
     if indx == 10:
         break
     time1 = datetime.now()
-    prompt = f"please provide May 2022 Occupation Profiles SOC_CODE for the job title: {i['job_title']} and put it in JSON along with the corresponding SOC_TITLE "
+    prompt = f"please provide May 2022 Occupation Profiles SOC_CODE and SOC_TITLE for the job title: {i['job_title']} and put it in JSON"
     prompt_template = f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
     ### Instruction:
