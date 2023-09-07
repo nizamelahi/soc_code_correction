@@ -28,7 +28,7 @@ for indx, i in enumerate(indata):
     if indx == 10:
         break
     time1 = datetime.now()
-    prompt = f"In as few words as possible ,please provide SOC_CODE for the job title: {i['job_title']} and put it in the format ---SOC_TITLE---SOC_CODE--- "
+    prompt = f"In as few words as possible ,please provide SOC_CODE for the job title: {i['job_title']} and put it in the format: ---SOC_TITLE---SOC_CODE--- "
     prompt_template = f"""Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
     ### Instruction:
