@@ -2,6 +2,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 import torch
 from datetime import datetime
 import json
+from auto_gptq import exllama_set_max_input_length
+
 
 
 with open("data.json") as json_file:
@@ -19,11 +21,9 @@ model = AutoModelForCausalLM.from_pretrained(
     model_name_or_path,
     torch_dtype=torch.float16,
     device_map="auto",
-    revision="gptq-4bit-64g-actorder_True",
-    use_safetensors=True,
-    trust_remote_code=False,
-    quantize_config=None
+    revision="gptq-4bit-32g-actorder_True",
 )
+model = exllama_set_max_input_length(model, 4096)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True)
 
