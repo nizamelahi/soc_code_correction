@@ -22,7 +22,6 @@ model = AutoModelForCausalLM.from_pretrained(
     revision="gptq-4bit-64g-actorder_True",
     use_safetensors=True,
     trust_remote_code=False,
-    device="cuda:0",
     quantize_config=None
 )
 
