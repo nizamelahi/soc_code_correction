@@ -31,7 +31,7 @@ for indx, i in enumerate(indata):
     if indx == 10:
         break
     time1 = datetime.now()
-    prompt = f"please provide the most relevant SOC_CODE and SOC_TITLE for the job title: {i['job_title']} and put it in JSON"
+    prompt = f"please provide the most relevant SOC_CODE and SOC_TITLE for the job title: {i['job_title']} "
     prompt_template = f"""Below is an instruction that describes a task or question, paired with an input that provides further context. Write a response that completes the task.
 
     ### Instruction:
