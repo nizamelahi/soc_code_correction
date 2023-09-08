@@ -14,6 +14,7 @@ with open('soc.txt') as f:
 model_name_or_path = "TheBloke/Platypus2-70B-Instruct-GPTQ"
 # To use a different branch, change revision
 # For example: revision="gptq-4bit-32g-actorder_True"
+torch. cuda. empty_cache() 
 model = AutoModelForCausalLM.from_pretrained(
     model_name_or_path,
     torch_dtype=torch.float16,
