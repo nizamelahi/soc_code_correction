@@ -1,3 +1,4 @@
+SOC_CODE : SOC_TITLE
 11-0000 : Management Occupations
 11-1000 : Top Executives
 11-1010 : Chief Executives

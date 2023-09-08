@@ -1,7 +1,5 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 import torch
-from auto_gptq import exllama_set_max_input_length
-
 from datetime import datetime
 import json
 
@@ -20,10 +18,8 @@ model = AutoModelForCausalLM.from_pretrained(
     model_name_or_path,
     torch_dtype=torch.float16,
     device_map="auto",
-    revision="gptq-4bit-64g-actorder_True",
+    revision="gptq-4bit-32g-actorder_True",
 )
-model = exllama_set_max_input_length(model, 4096)
-
 
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True)
 
