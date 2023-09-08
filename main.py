@@ -18,7 +18,7 @@ model = AutoModelForCausalLM.from_pretrained(
     model_name_or_path,
     torch_dtype=torch.float16,
     device_map="auto",
-    revision="gptq-4bit-32g-actorder_True",
+    revision="gptq-4bit-64g-actorder_True",
 )
 
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True)
@@ -31,7 +31,7 @@ for indx, i in enumerate(indata):
     if indx == 10:
         break
     time1 = datetime.now()
-    prompt = f"please provide the most relevant SOC_CODE and SOC_TITLE for the job title: {i['job_title']} "
+    prompt = f"please provide the most relevant SOC_CODE and SOC_TITLE for the job title: {i['job_title']} and put it in JSON"
     prompt_template = f"""Below is an instruction that describes a task or question, paired with an input that provides further context. Write a response that completes the task.
 
     ### Instruction:
