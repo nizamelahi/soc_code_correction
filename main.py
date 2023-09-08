@@ -20,6 +20,10 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.float16,
     device_map="auto",
     revision="gptq-4bit-64g-actorder_True",
+    use_safetensors=True,
+    trust_remote_code=False,
+    device="cuda:0",
+    quantize_config=None
 )
 
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, use_fast=True)
