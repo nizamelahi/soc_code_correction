@@ -6,6 +6,7 @@ with open('job_data_all.json') as json_file:
 
 mismatched_soc={}
 mismatched_ind={}
+
 count=0
 for i in data:
     count+=1
